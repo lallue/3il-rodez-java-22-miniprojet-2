@@ -2,10 +2,8 @@ package fr.ecole3il.rodez2023.carte.chemin.algorithmes;
 
 import java.util.*;
 
-
 import fr.ecole3il.rodez2023.carte.chemin.elements.Graphe;
 import fr.ecole3il.rodez2023.carte.chemin.elements.Noeud;
-import fr.ecole3il.rodez2023.carte.elements.Chemin;
 
 public class AlgorithmeDijkstra<E> implements AlgorithmeChemin<E> {
 
@@ -47,9 +45,8 @@ public class AlgorithmeDijkstra<E> implements AlgorithmeChemin<E> {
             chemin.add(noeudActuel);
             noeudActuel = precedent.get(noeudActuel);
         }
-
         Collections.reverse(chemin);
 
-        return new Chemin<>(chemin, precedent.get(arrivee));
+        return chemin;
     }
 }
