@@ -27,7 +27,7 @@ public class Graphe<E> {
 		this.matriceAdj.get(depart).put(arrivee, cout);		
 	}
 	
-	public double getCoutArete(Noeud<E> depart, Noeud<E> arrivee, double cout) {
+	public double getCoutArete(Noeud<E> depart, Noeud<E> arrivee) {
 		if (matriceAdj.containsKey(depart)) {
 			Map<Noeud<E>, Double> aretesAdjacentes = matriceAdj.get(depart);
 			if (aretesAdjacentes.containsKey(arrivee))
