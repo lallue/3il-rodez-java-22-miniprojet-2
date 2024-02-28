@@ -1,5 +1,55 @@
 package fr.ecole3il.rodez2023.carte.chemin.algorithmes;
 
-public class AlgorithmeDijkstra {
+import java.util.*;
 
+
+import fr.ecole3il.rodez2023.carte.chemin.elements.Graphe;
+import fr.ecole3il.rodez2023.carte.chemin.elements.Noeud;
+import fr.ecole3il.rodez2023.carte.elements.Chemin;
+
+public class AlgorithmeDijkstra<E> implements AlgorithmeChemin<E> {
+
+    @Override
+    public List<Noeud<E>> trouverChemin(Graphe<E> graphe, Noeud<E> depart, Noeud<E> arrivee) {
+        Map<Noeud<E>, Noeud<E>> precedent = new HashMap<>();
+        Map<Noeud<E>, Double> distance = new HashMap<>();
+        PriorityQueue<Noeud<E>> queue = new PriorityQueue<>(Comparator.comparingDouble(distance::get));
+
+        for (Noeud<E> noeud : graphe.getNoeuds()) {
+            distance.put(noeud, Double.POSITIVE_INFINITY);
+            precedent.put(noeud, null);
+        }
+        distance.put(depart, 0.0);
+        queue.add(depart);
+
+        while (!queue.isEmpty()) {
+            Noeud<E> noeudActuel = queue.poll();
+
+            if (noeudActuel.equals(arrivee)) {
+                break;
+            }
+
+            for (Noeud<E> voisin : graphe.getVoisins(noeudActuel)) {
+                double nouveauDistance = distance.get(noeudActuel) + graphe.getCoutArete(noeudActuel, voisin);
+                if (nouveauDistance < distance.get(voisin)) {
+                    queue.remove(voisin);
+                	distance.put(voisin, nouveauDistance);
+                    precedent.put(voisin, noeudActuel);
+                    queue.add(voisin);
+                }
+            }
+        }
+
+        List<Noeud<E>> chemin = new ArrayList<>();
+        Noeud<E> noeudActuel = arrivee;
+
+        while (noeudActuel != null) {
+            chemin.add(noeudActuel);
+            noeudActuel = precedent.get(noeudActuel);
+        }
+
+        Collections.reverse(chemin);
+
+        return new Chemin<>(chemin, precedent.get(arrivee));
+    }
 }
