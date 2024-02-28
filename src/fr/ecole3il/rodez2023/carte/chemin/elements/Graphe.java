@@ -33,6 +33,7 @@ public class Graphe<E> {
 			if (aretesAdjacentes.containsKey(arrivee))
 				return aretesAdjacentes.get(arrivee);
 		}
+		//expliquer pourquoi j'ai utiliser (double) null
 		return (Double) null;
 	}
 	
