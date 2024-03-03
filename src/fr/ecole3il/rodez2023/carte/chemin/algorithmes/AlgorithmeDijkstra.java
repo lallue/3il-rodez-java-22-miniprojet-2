@@ -30,10 +30,9 @@ public class AlgorithmeDijkstra<E> implements AlgorithmeChemin<E> {
             for (Noeud<E> voisin : graphe.getVoisins(noeudActuel)) {
                 double nouveauDistance = distance.get(noeudActuel) + graphe.getCoutArete(noeudActuel, voisin);
                 if (nouveauDistance < distance.get(voisin)) {
-                    queue.remove(voisin);
-                	distance.put(voisin, nouveauDistance);
+                    distance.put(voisin, nouveauDistance);
                     precedent.put(voisin, noeudActuel);
-                    queue.add(voisin);
+                    queue.offer(voisin);
                 }
             }
         }
