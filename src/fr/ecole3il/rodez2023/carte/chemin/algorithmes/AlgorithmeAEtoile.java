@@ -1,5 +1,6 @@
 package fr.ecole3il.rodez2023.carte.chemin.algorithmes;
 
+
 import fr.ecole3il.rodez2023.carte.chemin.elements.Graphe;
 import fr.ecole3il.rodez2023.carte.chemin.elements.Noeud;
 
@@ -8,6 +9,7 @@ import java.util.*;
 public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
 
     protected double heuristique(Noeud<E> n, Noeud<E> cible) {
+        // Définir votre propre heuristique significative ici
         return 0;
     }
 
@@ -52,6 +54,9 @@ public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
         LinkedList<Noeud<E>> chemin = reconstruireChemin(precedent, cible);
         Collections.reverse(chemin);
 
+        if (chemin.isEmpty()) {
+            return  null;
+        }
         return new ArrayList<>(chemin);
     }
 
@@ -65,4 +70,3 @@ public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
         return chemin;
     }
 }
-
