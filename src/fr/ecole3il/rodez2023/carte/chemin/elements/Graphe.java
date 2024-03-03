@@ -34,11 +34,11 @@ public class Graphe<E> {
 				return aretesAdjacentes.get(arrivee);
 		}
 		//expliquer pourquoi j'ai utiliser (double) null
-		return (Double) null;
+		return Double.POSITIVE_INFINITY;
 	}
 	
 	public List<Noeud<E>> getNoeuds(){
-		return new ArrayList<>();
+		return new ArrayList<>(noeuds);
 	}
 	
 	public List<Noeud<E>> getVoisins(Noeud<E> noeud){

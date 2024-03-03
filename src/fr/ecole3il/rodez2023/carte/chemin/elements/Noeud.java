@@ -5,25 +5,24 @@ import java.util.List;
 
 public class Noeud<E> {
 
-	
-	private E valeur;
-	private List<Noeud<E>> voisins;
+    private E valeur;
+    private List<Noeud<E>> voisins;
 
-	public Noeud(E valeur) {
-		this.valeur = valeur;
-		this.voisins = new ArrayList<>();
-	}
-	
-	public E getValeur() {
-		return this.valeur;
-	}
-	
-	public List<Noeud<E>> getVoisins(){
-		return this.voisins;
-	}
-	
-	public void ajouterVoisin(Noeud<E> voisin) {
-		this.voisins.add(voisin);
-	}
-	
+    public Noeud(E valeur) {
+        this.valeur = valeur;
+        this.voisins = new ArrayList<>();
+    }
+
+    public E getValeur() {
+        return this.valeur;
+    }
+
+    public List<Noeud<E>> getVoisins() {
+        return this.voisins;
+    }
+
+    public void ajouterVoisin(Noeud<E> voisin) {
+        this.voisins.add(voisin);
+        voisin.voisins.add(this);
+    }
 }
