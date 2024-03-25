@@ -121,14 +121,17 @@ public class CarteGUI extends JFrame {
 	}
 
 	private void trouverChemin() {
-		if (caseDepart != null && caseArrivee != null) {
-			Chemin chemin = AdaptateurAlgorithme.trouverChemin(algorithme, carte, caseDepart.getX(), caseDepart.getY(), caseArrivee.getX(), caseArrivee.getY());
-			System.out.println("Chemin le plus court :");
-			for (Case c : chemin.getCases()) {
-				System.out.println("[" + c.getX() + ", " + c.getY() + "]");
-			}
-		}
+	    if (caseDepart != null && caseArrivee != null) {
+	        Chemin chemin = AdaptateurAlgorithme.trouverChemin(algorithme, carte, caseDepart.getX(), caseDepart.getY(), caseArrivee.getX(), caseArrivee.getY());
+	        System.out.println("Chemin le plus court :");
+	        for (Case c : chemin.getCases()) {
+	            System.out.println("[" + c.getX() + ", " + c.getY() + "]");
+	        }
+
+	        repaint(); // Mettre à jour l'affichage de la carte avec le nouveau chemin
+	    }
 	}
+
 
 	private BufferedImage getTuileImage(Tuile tuile) {
 		// Bon, j'ai pas eu le temps de faire les images
