@@ -10,10 +10,17 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Cette classe contient les tests unitaires pour la classe AlgorithmeChemin.
+ */
 public class AlgorithmeCheminTest {
 
+    /**
+     * Teste la méthode trouverChemin de la classe AlgorithmeChemin.
+     */
     @Test
     public void testTrouverChemin() {
+        // Création d'un graphe avec des noeuds et des arêtes
         Graphe<Integer> graphe = new Graphe<>();
         Noeud<Integer> noeud1 = new Noeud<>(1);
         Noeud<Integer> noeud2 = new Noeud<>(2);
@@ -22,9 +29,13 @@ public class AlgorithmeCheminTest {
         graphe.ajouterArete(noeud1, noeud2, 1.0);
         graphe.ajouterArete(noeud2, noeud3, 2.0);
 
-        AlgorithmeChemin<Integer> algorithme = new AlgorithmeDijkstra<>(); 
+        // Création d'un algorithme de recherche de chemin (Dijkstra)
+        AlgorithmeChemin<Integer> algorithme = new AlgorithmeDijkstra<>();
 
+        // Recherche du chemin entre les noeuds 1 et 3 dans le graphe
         List<Noeud<Integer>> chemin = algorithme.trouverChemin(graphe, noeud1, noeud3);
+
+        // Vérification que le chemin trouvé n'est pas nul et contient les noeuds attendus
         assertNotNull(chemin);
         assertEquals(3, chemin.size());
         assertEquals(noeud1, chemin.get(0));

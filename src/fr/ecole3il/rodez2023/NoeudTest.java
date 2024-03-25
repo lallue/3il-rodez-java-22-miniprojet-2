@@ -7,25 +7,36 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Cette classe contient les tests unitaires pour la classe Noeud.
+ */
 public class NoeudTest {
 
-	@Test
-	public void testAjouterVoisin() {
-	    Noeud<String> noeudA = new Noeud<>("A");
-	    Noeud<String> noeudB = new Noeud<>("B");
+    /**
+     * Teste la méthode ajouterVoisin de la classe Noeud.
+     */
+    @Test
+    public void testAjouterVoisin() {
+        // Création des noeuds A et B
+        Noeud<String> noeudA = new Noeud<>("A");
+        Noeud<String> noeudB = new Noeud<>("B");
 
-	    assertNotNull(noeudA.getVoisins());
-	    assertTrue(noeudA.getVoisins().isEmpty());
+        // Vérifie que le noeud A a initialement aucun voisin
+        assertNotNull(noeudA.getVoisins());
+        assertTrue(noeudA.getVoisins().isEmpty());
 
-	    noeudA.ajouterVoisin(noeudB);
+        // Ajout de B comme voisin de A
+        noeudA.ajouterVoisin(noeudB);
 
-	    System.out.println("Voisins de A après ajout de B : " + noeudA.getVoisins());
+        // Affiche les voisins de A après l'ajout de B
+        System.out.println("Voisins de A après ajout de B : " + noeudA.getVoisins());
 
-	    List<Noeud<String>> voisinsA = noeudA.getVoisins();
-	    List<Noeud<String>> voisinsB = noeudB.getVoisins();
+        // Récupération des listes de voisins de A et B
+        List<Noeud<String>> voisinsA = noeudA.getVoisins();
+        List<Noeud<String>> voisinsB = noeudB.getVoisins();
 
-	    assertTrue(voisinsA.contains(noeudB), "B devrait être un voisin de A");
-	    assertTrue(voisinsB.contains(noeudA), "A devrait être un voisin de B");
-	}
-
+        // Vérifie si B est un voisin de A et si A est un voisin de B
+        assertTrue(voisinsA.contains(noeudB), "B devrait être un voisin de A");
+        assertTrue(voisinsB.contains(noeudA), "A devrait être un voisin de B");
+    }
 }
