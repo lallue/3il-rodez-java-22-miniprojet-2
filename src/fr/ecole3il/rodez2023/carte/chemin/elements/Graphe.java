@@ -46,6 +46,4 @@ public class Graphe<E> {
 			return new ArrayList<>();
 		return new ArrayList<>(this.matriceAdj.get(noeud).keySet());
 	}
-	
-
 }

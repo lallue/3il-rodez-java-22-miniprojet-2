@@ -51,22 +51,22 @@ public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
             }
         }
 
-        LinkedList<Noeud<E>> chemin = reconstruireChemin(precedent, cible);
+        LinkedList<Noeud<E>> chemin = reconstruireChemin(precedent, cible, debut);
         Collections.reverse(chemin);
 
-        if (chemin.isEmpty()) {
-            return  null;
-        }
         return new ArrayList<>(chemin);
     }
 
-    private LinkedList<Noeud<E>> reconstruireChemin(Map<Noeud<E>, Noeud<E>> predecesseur, Noeud<E> cible) {
+    private LinkedList<Noeud<E>> reconstruireChemin(Map<Noeud<E>, Noeud<E>> predecesseur, Noeud<E> cible, Noeud<E> debut) {
         LinkedList<Noeud<E>> chemin = new LinkedList<>();
         Noeud<E> courant = cible;
         while (courant != null) {
             chemin.addFirst(courant);
             courant = predecesseur.get(courant);
         }
-        return chemin;
+        if (chemin.getFirst().equals(debut))
+            return chemin;
+        else
+            return new LinkedList<>();  // No path found
     }
-}
+    }
