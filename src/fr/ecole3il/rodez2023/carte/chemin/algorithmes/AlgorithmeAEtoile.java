@@ -94,12 +94,11 @@ public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
         LinkedList<Noeud<E>> chemin = new LinkedList<>();
         Noeud<E> courant = cible;
         while (courant != null) {
-            chemin.addFirst(courant);
+            chemin.add(courant);
             courant = predecesseur.get(courant);
         }
-        if (chemin.getFirst().equals(debut)) {
-            return chemin;
-        }
-        return new LinkedList<>();  // No path found
+        Collections.reverse(chemin);
+
+        return chemin;
     }    
 }
