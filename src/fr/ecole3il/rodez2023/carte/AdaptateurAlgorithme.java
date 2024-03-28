@@ -79,9 +79,7 @@ public class AdaptateurAlgorithme {
     private static void ajouterAretesVoisines(Graphe<Case> graphe, Noeud<Case> currentNoeud, int x, int y, int largeur,
             int hauteur) {
 
-        int[][] offsets = { { -1, -1 }, { -1, 0 }, { -1, 1 },
-                { 0, -1 }, { 0, 1 },
-                { 1, -1 }, { 1, 0 }, { 1, 1 } };
+        int[][] offsets = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
 
         for (int[] offset : offsets) {
             int newX = x + offset[0];
@@ -95,6 +93,7 @@ public class AdaptateurAlgorithme {
                 }
             }
         }
+
     }
 
     /**
