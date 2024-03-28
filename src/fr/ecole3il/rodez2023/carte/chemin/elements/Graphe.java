@@ -3,6 +3,9 @@ package fr.ecole3il.rodez2023.carte.chemin.elements;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import fr.ecole3il.rodez2023.carte.elements.Case;
+
 import java.util.HashMap;
 
 /**
@@ -12,8 +15,8 @@ import java.util.HashMap;
  */
 public class Graphe<E> {
 
-    private Map<Noeud<E>, Map<Noeud<E>, Double>> matriceAdj;
-    private List<Noeud<E>> noeuds;
+    private Map<Noeud<E>, Map<Noeud<E>, Double>> matriceAdj; // Matrice d'adjacence représentant les arêtes du graphe
+    private List<Noeud<E>> noeuds; // Liste des noeuds du graphe
 
     /**
      * Constructeur de la classe Graphe.
@@ -84,5 +87,38 @@ public class Graphe<E> {
         if (!this.matriceAdj.containsKey(noeud))
             return new ArrayList<>();
         return new ArrayList<>(this.matriceAdj.get(noeud).keySet());
+    }
+
+    /**
+     * Récupère le noeud situé aux coordonnées spécifiées.
+     * 
+     * @param x La coordonnée x du noeud.
+     * @param y La coordonnée y du noeud.
+     * @return Le noeud situé aux coordonnées spécifiées, ou null s'il n'existe pas.
+     */
+    public Noeud<E> getNoeud(int x, int y) {
+        for (Noeud<E> noeud : noeuds) {
+            if (noeud.getValeur() instanceof Case) {
+                Case caseValue = (Case) noeud.getValeur();
+                if (caseValue.getX() == x && caseValue.getY() == y) {
+                    return noeud;
+                }
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Obtient la pénalité associée à un noeud.
+     * 
+     * @param noeud Le noeud dont on veut obtenir la pénalité.
+     * @return La pénalité associée au noeud.
+     */
+    public int getPenalite(Noeud<E> noeud) {
+        if (noeud.getValeur() instanceof Case) {
+            Case caseValue = (Case) noeud.getValeur();
+            return caseValue.getTuile().getPenalite();
+        }
+        return 0;
     }
 }

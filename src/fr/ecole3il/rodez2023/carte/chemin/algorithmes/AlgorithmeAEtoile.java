@@ -40,12 +40,14 @@ public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
      */
     @Override
     public List<Noeud<E>> trouverChemin(Graphe<E> graphe, Noeud<E> debut, Noeud<E> cible) {
+        // Initialisation des structures de données
         Map<Noeud<E>, Double> coutActuel = new HashMap<>();
         Map<Noeud<E>, Double> coutTotalEstime = new HashMap<>();
         Map<Noeud<E>, Noeud<E>> precedent = new HashMap<>();
         Set<Noeud<E>> explore = new HashSet<>();
         PriorityQueue<Noeud<E>> filePrioritaire = new PriorityQueue<>(Comparator.comparingDouble(coutTotalEstime::get));
 
+        // Initialisation des coûts
         for (Noeud<E> noeud : graphe.getNoeuds()) {
             coutTotalEstime.put(noeud, Double.POSITIVE_INFINITY);
             coutActuel.put(noeud, Double.POSITIVE_INFINITY);
@@ -55,12 +57,14 @@ public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
         coutTotalEstime.put(debut, heuristique(debut, cible));
         filePrioritaire.add(debut);
 
+        // Algorithme A*
         while (!filePrioritaire.isEmpty()) {
             Noeud<E> courant = filePrioritaire.poll();
             if (courant.equals(cible))
                 break;
             explore.add(courant);
 
+            // Exploration des voisins
             for (Noeud<E> voisin : graphe.getVoisins(courant)) {
                 if (explore.contains(voisin))
                     continue;
@@ -76,6 +80,7 @@ public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
             }
         }
 
+        // Reconstruction du chemin
         LinkedList<Noeud<E>> chemin = reconstruireChemin(precedent, cible, debut);
         Collections.reverse(chemin);
 

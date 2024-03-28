@@ -41,4 +41,16 @@ public class Carte {
     public int getHauteur() {
         return tuiles[0].length;
     }
+    /**
+     * Ajoute de la Méthode getCase
+     * Récupère la case située aux coordonnées spécifiées.
+     * 
+     * @param xDepart La coordonnée x de la case.
+     * @param yDepart La coordonnée y de la case.
+     * @return La case située aux coordonnées spécifiées.
+     */
+    public Case getCase(int xDepart, int yDepart) {
+        Tuile tuile = getTuile(xDepart, yDepart);
+        return new Case(tuile, xDepart, yDepart);
+    }
 }
