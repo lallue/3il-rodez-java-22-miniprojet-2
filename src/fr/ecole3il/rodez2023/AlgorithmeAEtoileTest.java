@@ -3,6 +3,9 @@ package fr.ecole3il.rodez2023;
 import fr.ecole3il.rodez2023.carte.chemin.algorithmes.AlgorithmeAEtoile;
 import fr.ecole3il.rodez2023.carte.chemin.elements.Graphe;
 import fr.ecole3il.rodez2023.carte.chemin.elements.Noeud;
+import fr.ecole3il.rodez2023.carte.elements.Case;
+import fr.ecole3il.rodez2023.carte.elements.Tuile;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -19,32 +22,35 @@ public class AlgorithmeAEtoileTest {
      */
     @Test
     public void testTrouverChemin() {
-        // Création d'un graphe avec des noeuds et une arête
-        Graphe<Integer> graphe = new Graphe<>();
-        Noeud<Integer> noeud1 = new Noeud<>(1);
-        Noeud<Integer> noeud2 = new Noeud<>(2);
+        // Création d'un graphe avec des nœuds et une arête
+        Graphe<Case> graphe = new Graphe<>();
+        Noeud<Case> noeud1 = new Noeud<>(new Case(Tuile.DESERT, 0, 0));
+        Noeud<Case> noeud2 = new Noeud<>(new Case(Tuile.PLAINE, 1, 1));
 
-        // Ajout des noeuds au graphe
+        // Ajout des nœuds au graphe
         graphe.ajouterNoeud(noeud1);
         graphe.ajouterNoeud(noeud2);
 
-        // Ajout d'une arête entre les noeuds 1 et 2
+        // Ajout d'une arête entre les nœuds 1 et 2
         graphe.ajouterArete(noeud1, noeud2, 1.0);
 
-        // Définition du noeud de départ et du noeud cible
-        Noeud<Integer> debut = new Noeud<>(1);
-        Noeud<Integer> cible = new Noeud<>(2);
+        // Définition du nœud de départ et du nœud cible
+        Noeud<Case> debut = noeud1; // Utilisation du nœud réel
+        Noeud<Case> cible = noeud2; // Utilisation du nœud réel
 
         // Création de l'algorithme A* pour trouver le chemin
-        AlgorithmeAEtoile<Integer> algorithme = new AlgorithmeAEtoile<>();
+        AlgorithmeAEtoile<Case> algorithme = new AlgorithmeAEtoile<>();
 
-        // Recherche du chemin entre le noeud de départ et le noeud cible dans le graphe
-        List<Noeud<Integer>> chemin = algorithme.trouverChemin(graphe, debut, cible);
+        // Recherche du chemin entre le nœud de départ et le nœud cible dans le graphe
+        List<Noeud<Case>> chemin = algorithme.trouverChemin(graphe, debut, cible);
 
         // Affichage du chemin trouvé
         System.out.println("Chemin trouvé : " + chemin);
 
         // Vérification que le chemin trouvé n'est pas nul
         assertNotNull(chemin);
+
+        // Vérification que le chemin trouvé est correct (optionnel)
+        assertEquals(2, chemin.size()); // Le chemin doit contenir exactement deux nœuds (début et cible)
     }
 }
