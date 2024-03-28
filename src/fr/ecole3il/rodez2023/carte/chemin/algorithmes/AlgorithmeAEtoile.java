@@ -7,7 +7,8 @@ import fr.ecole3il.rodez2023.carte.elements.Case;
 import java.util.*;
 
 /**
- * Implémentation de l'algorithme A* pour trouver le chemin le plus court entre deux nœuds dans un graphe.
+ * Implémentation de l'algorithme A* pour trouver le chemin le plus court entre
+ * deux nœuds dans un graphe.
  *
  * @param <E> Le type de valeur associée aux nœuds du graphe.
  */
@@ -31,12 +32,14 @@ public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
     }
 
     /**
-     * Trouve un chemin entre un nœud de départ et un nœud d'arrivée dans un graphe donné.
+     * Trouve un chemin entre un nœud de départ et un nœud d'arrivée dans un graphe
+     * donné.
      *
      * @param graphe Le graphe dans lequel la recherche doit être effectuée.
      * @param debut  Le nœud de départ.
      * @param cible  Le nœud d'arrivée.
-     * @return Une liste de nœuds représentant le chemin trouvé entre le nœud de départ et le nœud d'arrivée.
+     * @return Une liste de nœuds représentant le chemin trouvé entre le nœud de
+     *         départ et le nœud d'arrivée.
      */
     @Override
     public List<Noeud<E>> trouverChemin(Graphe<E> graphe, Noeud<E> debut, Noeud<E> cible) {
@@ -95,7 +98,8 @@ public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
      * @param debut        Le nœud de départ.
      * @return Le chemin reconstruit.
      */
-    private LinkedList<Noeud<E>> reconstruireChemin(Map<Noeud<E>, Noeud<E>> predecesseur, Noeud<E> cible, Noeud<E> debut) {
+    private LinkedList<Noeud<E>> reconstruireChemin(Map<Noeud<E>, Noeud<E>> predecesseur, Noeud<E> cible,
+            Noeud<E> debut) {
         LinkedList<Noeud<E>> chemin = new LinkedList<>();
         Noeud<E> courant = cible;
         while (courant != null) {
@@ -105,5 +109,5 @@ public class AlgorithmeAEtoile<E> implements AlgorithmeChemin<E> {
         Collections.reverse(chemin);
 
         return chemin;
-    }    
+    }
 }

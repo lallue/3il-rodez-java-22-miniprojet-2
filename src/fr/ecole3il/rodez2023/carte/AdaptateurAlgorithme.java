@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Cette classe fournit des méthodes statiques pour adapter un algorithme de recherche de chemin à une carte.
+ * Cette classe fournit des méthodes statiques pour adapter un algorithme de
+ * recherche de chemin à une carte.
  */
 public class AdaptateurAlgorithme {
 
@@ -26,7 +27,8 @@ public class AdaptateurAlgorithme {
      * @param yArrivee   La coordonnée y du point d'arrivée sur la carte.
      * @return Le chemin trouvé sur la carte, ou un chemin vide s'il n'y en a pas.
      */
-    public static Chemin trouverChemin(AlgorithmeChemin<Case> algorithme, Carte carte, int xDepart, int yDepart, int xArrivee, int yArrivee) {
+    public static Chemin trouverChemin(AlgorithmeChemin<Case> algorithme, Carte carte, int xDepart, int yDepart,
+            int xArrivee, int yArrivee) {
 
         Graphe<Case> graphe = creerGraphe(carte);
         Noeud<Case> depart = graphe.getNoeud(xDepart, yDepart);
@@ -38,7 +40,7 @@ public class AdaptateurAlgorithme {
         }
         return new Chemin(afficherChemin(noeudsChemin));
     }
-    
+
     /**
      * Crée un graphe à partir de la carte donnée.
      *
@@ -58,12 +60,12 @@ public class AdaptateurAlgorithme {
         for (int x = 0; x < largeur; x++) {
             for (int y = 0; y < hauteur; y++) {
                 Noeud<Case> currentNoeud = graphe.getNoeud(x, y);
-                ajouterAretesVoisines(graphe, currentNoeud, x, y, largeur, hauteur); 
+                ajouterAretesVoisines(graphe, currentNoeud, x, y, largeur, hauteur);
             }
         }
         return graphe;
     }
-    
+
     /**
      * Ajoute les arêtes aux nœuds voisins du nœud donné dans le graphe.
      *
@@ -74,8 +76,9 @@ public class AdaptateurAlgorithme {
      * @param largeur      La largeur de la carte.
      * @param hauteur      La hauteur de la carte.
      */
-    private static void ajouterAretesVoisines(Graphe<Case> graphe, Noeud<Case> currentNoeud, int x, int y, int largeur, int hauteur) {
-           
+    private static void ajouterAretesVoisines(Graphe<Case> graphe, Noeud<Case> currentNoeud, int x, int y, int largeur,
+            int hauteur) {
+
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 int newX = x + i;
@@ -91,7 +94,7 @@ public class AdaptateurAlgorithme {
             }
         }
     }
-    
+
     /**
      * Calcule le coût entre deux cases.
      *
@@ -105,7 +108,7 @@ public class AdaptateurAlgorithme {
         }
         return from.getTuile().getPenalite() + to.getTuile().getPenalite();
     }
-    
+
     /**
      * Affiche le chemin trouvé sur la carte.
      *
@@ -125,7 +128,7 @@ public class AdaptateurAlgorithme {
             System.out.print("\n -> " + caseNode.toString());
         }
         System.out.println();
-        
+
         return cheminCases;
     }
 }

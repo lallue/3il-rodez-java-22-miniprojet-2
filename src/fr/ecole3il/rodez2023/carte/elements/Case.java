@@ -1,7 +1,8 @@
 package fr.ecole3il.rodez2023.carte.elements;
 
 /**
- * La classe Case représente une case sur une carte, caractérisée par une tuile et des coordonnées (x, y).
+ * La classe Case représente une case sur une carte, caractérisée par une tuile
+ * et des coordonnées (x, y).
  * Elle permet de conserver la position (x, y) d'une tuile sur une carte.
  */
 public class Case {
@@ -10,10 +11,12 @@ public class Case {
     private int y; // Coordonnée y de la case sur la carte
 
     /**
-     * Construit une nouvelle case avec la tuile spécifiée et les coordonnées (x, y) spécifiées.
+     * Construit une nouvelle case avec la tuile spécifiée et les coordonnées (x, y)
+     * spécifiées.
+     * 
      * @param tuile La tuile associée à cette case.
-     * @param x La coordonnée x de la case sur la carte.
-     * @param y La coordonnée y de la case sur la carte.
+     * @param x     La coordonnée x de la case sur la carte.
+     * @param y     La coordonnée y de la case sur la carte.
      */
     public Case(Tuile tuile, int x, int y) {
         this.tuile = tuile;
@@ -23,6 +26,7 @@ public class Case {
 
     /**
      * Récupère la tuile associée à cette case.
+     * 
      * @return La tuile associée à cette case.
      */
     public Tuile getTuile() {
@@ -31,6 +35,7 @@ public class Case {
 
     /**
      * Récupère la coordonnée x de la case sur la carte.
+     * 
      * @return La coordonnée x de la case sur la carte.
      */
     public int getX() {
@@ -39,6 +44,7 @@ public class Case {
 
     /**
      * Récupère la coordonnée y de la case sur la carte.
+     * 
      * @return La coordonnée y de la case sur la carte.
      */
     public int getY() {
@@ -46,8 +52,11 @@ public class Case {
     }
 
     /**
-     * Renvoie une représentation textuelle de la case sous forme de chaîne de caractères.
-     * @return Une chaîne de caractères représentant la case avec sa tuile et ses coordonnées.
+     * Renvoie une représentation textuelle de la case sous forme de chaîne de
+     * caractères.
+     * 
+     * @return Une chaîne de caractères représentant la case avec sa tuile et ses
+     *         coordonnées.
      */
     @Override
     public String toString() {

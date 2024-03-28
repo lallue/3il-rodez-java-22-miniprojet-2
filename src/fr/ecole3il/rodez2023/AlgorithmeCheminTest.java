@@ -35,7 +35,8 @@ public class AlgorithmeCheminTest {
         // Recherche du chemin entre les noeuds 1 et 3 dans le graphe
         List<Noeud<Integer>> chemin = algorithme.trouverChemin(graphe, noeud1, noeud3);
 
-        // Vérification que le chemin trouvé n'est pas nul et contient les noeuds attendus
+        // Vérification que le chemin trouvé n'est pas nul et contient les noeuds
+        // attendus
         assertNotNull(chemin);
         assertEquals(3, chemin.size());
         assertEquals(noeud1, chemin.get(0));

@@ -77,7 +77,8 @@ public class GrapheTest {
         // Récupération des voisins du noeud X
         List<Noeud<Character>> voisinsX = graphe.getVoisins(noeudX);
 
-        // Vérification que la liste de voisins n'est pas nulle et contient les noeuds Y et Z
+        // Vérification que la liste de voisins n'est pas nulle et contient les noeuds Y
+        // et Z
         assertNotNull(voisinsX);
         assertEquals(2, voisinsX.size());
         assertTrue(voisinsX.contains(noeudY));

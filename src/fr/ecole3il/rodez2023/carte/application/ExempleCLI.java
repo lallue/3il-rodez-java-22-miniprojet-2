@@ -11,21 +11,21 @@ import fr.ecole3il.rodez2023.carte.manipulateurs.GenerateurCarte;
 
 /**
  * @author p.roquart
- * genre on peut tester le code
- * c'est agaçant tous ces tests
+ *         genre on peut tester le code
+ *         c'est agaçant tous ces tests
  * 
- * de toute façon quand ça compile c'est bon
+ *         de toute façon quand ça compile c'est bon
  */
-//ici modifier
+// ici modifier
 public class ExempleCLI {
 
-    public static void main(String[] args) {
-        GenerateurCarte generateur = new GenerateurCarte();
-		Carte test = generateur.genererCarte(100,100);
+	public static void main(String[] args) {
+		GenerateurCarte generateur = new GenerateurCarte();
+		Carte test = generateur.genererCarte(100, 100);
 		AlgorithmeChemin<Case> algoChemin = new AlgorithmeDijkstra<>();
 		Chemin chemin = AdaptateurAlgorithme.trouverChemin(algoChemin, test, 0, 0, 50, 50);
 		chemin.afficherChemin();
 		chemin = AdaptateurAlgorithme.trouverChemin(algoChemin, test, 0, 0, 50, 50);
 		chemin.afficherChemin();
-    }
+	}
 }

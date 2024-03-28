@@ -54,8 +54,8 @@ public class Graphe<E> {
     /**
      * Obtient le coût d'une arête entre deux noeuds.
      *
-     * @param depart   Le noeud de départ de l'arête.
-     * @param arrivee  Le noeud d'arrivée de l'arête.
+     * @param depart  Le noeud de départ de l'arête.
+     * @param arrivee Le noeud d'arrivée de l'arête.
      * @return Le coût de l'arête entre les deux noeuds.
      */
     public double getCoutArete(Noeud<E> depart, Noeud<E> arrivee) {
@@ -107,7 +107,7 @@ public class Graphe<E> {
         }
         return null;
     }
-    
+
     /**
      * Obtient la pénalité associée à un noeud.
      * 
