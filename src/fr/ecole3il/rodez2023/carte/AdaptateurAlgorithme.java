@@ -79,17 +79,19 @@ public class AdaptateurAlgorithme {
     private static void ajouterAretesVoisines(Graphe<Case> graphe, Noeud<Case> currentNoeud, int x, int y, int largeur,
             int hauteur) {
 
-        for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
-                int newX = x + i;
-                int newY = y + j;
-                if (newX >= 0 && newX < largeur && newY >= 0 && newY < hauteur) {
-                    Noeud<Case> voisinNoeud = graphe.getNoeud(newX, newY);
-                    if (voisinNoeud != null) {
-                        double cout = calculerCout(currentNoeud.getValeur(), voisinNoeud.getValeur());
-                        graphe.ajouterArete(currentNoeud, voisinNoeud, cout);
-                        currentNoeud.ajouterVoisin(voisinNoeud);
-                    }
+        int[][] offsets = { { -1, -1 }, { -1, 0 }, { -1, 1 },
+                { 0, -1 }, { 0, 1 },
+                { 1, -1 }, { 1, 0 }, { 1, 1 } };
+
+        for (int[] offset : offsets) {
+            int newX = x + offset[0];
+            int newY = y + offset[1];
+            if (newX >= 0 && newX < largeur && newY >= 0 && newY < hauteur) {
+                Noeud<Case> voisinNoeud = graphe.getNoeud(newX, newY);
+                if (voisinNoeud != null) {
+                    double cout = calculerCout(currentNoeud.getValeur(), voisinNoeud.getValeur());
+                    graphe.ajouterArete(currentNoeud, voisinNoeud, cout);
+                    currentNoeud.ajouterVoisin(voisinNoeud);
                 }
             }
         }
